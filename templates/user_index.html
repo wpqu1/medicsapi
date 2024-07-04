@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <title>PUP MEDICS - User Index</title>
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="icon" href="https://www.pup.edu.ph/resources/images/icons/favicon.ico" type="image/x-icon">
+  <script src="static/js/jquery.min.js"></script>  
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script> 
+  <script src="static/js/all.min.js"></script>
+  <script src="static/js/bootstrap-datepicker.min.js"></script>
+  <style>
+	body {
+	font-size: 18px;
+    font-family: 'Inter', sans-serif;
+	}
+    .container {
+      margin-top: 2%;
+	  margin-left: 2%;
+    }
+	.form-group {
+    margin-bottom: 2%; 
+	}
+	.btn-primary,  .btn-primary:visited {
+    background-color: #DAA520 !important;
+	border-color: #DAA520 !important; 
+	font-weight: bold;
+	color: #000000;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	}
+	.btn-primary:hover, .btn-primary:active {
+	background-color: #FFDF00 !important;
+	border-color: #FFDF00 !important;
+	color: #000000;
+	font-weight: bold;
+	}
+	.navbar {
+	background-color: #800000;
+	}
+	.navbar-brand {
+	color: #fffff !important;
+	}
+	.nav-item {
+	color: #fff;
+	}
+	.logo {
+	height: 44px;
+	padding-right: 30px;
+	}
+	.landing {
+	margin-top: 70px;
+	max-width: 42em;
+	margin: 15 auto;
+		margin-right: auto;
+		margin-bottom: 15px;
+		margin-left: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	}
+	.footer {
+	margin-top: 20%;
+	margin-right: 40px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	}
+    .data-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+    .data-container table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    .data-container th, .data-container td {
+        padding: 10px;
+        border: 1px solid #ddd;
+		font-size: 12px;
+    }
+    .data-container th {
+        font-weight: bold;
+    }
+    .data-container tr:nth-child(even) {
+    }
+  </style>
+
+
+</head>
+
+<body>
+{% include 'flash.html' %}
+<nav class="navbar navbar-expand-lg">
+
+      <div class="container-fluid">
+	  <img src="https://sis8.pup.edu.ph/student/assets/images/PUPLogo.png" alt="PUP Logo" class="logo">
+        <a class="navbar-brand" href="#"><strong>User Index</strong></a>
+		
+        <!-- Adaptive Collapse/Shrink -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul id="my-ul" class="ms-auto navbar-nav">
+		  
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary btn-block"  href="/dashboard">Back</a>
+            </li>
+			
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary btn-block" href="/record_register">Add</a>
+            </li> 
+			
+			<li class="nav-item">
+              <a class="nav-link btn btn-primary btn-block" href="/record_edit">Edit</a>
+            </li> 
+		
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary btn-block" href="/record_delete">Delete</a>
+            </li>  		
+
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary btn-block" href="/logout">Logout</a>
+            </li> 	
+     
+          </ul>
+		  
+        </div>
+      </div>
+    </nav>
+
+<div class="data-container">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birthdate</th>
+            <th>Contact</th>
+            <th>Date Joined</th>
+            <th>Email</th>
+            <th>User Type</th>
+        </tr>
+        {% for user in data %}
+        <tr>
+            <td>{{ user.user_id }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.birthdate }}</td>
+            <td>{{ user.contact }}</td>
+            <td>{{ user.date_joined }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.user_type }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="8">No data available</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+	
+</body>
+</html>

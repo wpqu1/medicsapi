@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="https://www.pup.edu.ph/resources/images/icons/favicon.ico" type="image/x-icon">
+    <title>MEDICS - Tally of Appointments</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+		.id-column { width: 125px; font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h2>Tally of Appointments in MEDICS</h2>
+	<p>Report generated on: {{ current_time }}</p>
+    <table>
+        <thead>
+            <tr>
+				<th>Appointment #</th>
+				<th>Date</th>
+                <th>Time</th>
+				<th class = "id-column">Patient Name</th>
+				<th>Medical Personnel In Charge</th>
+				<th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+				<td>{{ row.FormID }}</td>
+                <td>{{ row.DateOfVisit }}</td>
+                <td>{{ row.TimeOfVisit }}</td>
+				<td class = "id-column">{{ row.NameOfPatient }}</td>
+				<td>{{ row.MedicalPersonnelInCharge }}</td>
+				<td>{{ row.Reason }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+	<title>PUP MEDICS - Backend Server</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+	<link rel="icon" href="https://www.pup.edu.ph/resources/images/icons/favicon.ico" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+        <style>
+            body {
+                font-size: 18px; 
+                font-family: 'Inter', sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #2d2d30;
+                color: #ffffff;  
+            }
+            .welcome-text {
+                text-align: center;
+                margin-top: 20px;
+				font-size: 24px;
+				padding-bottom: 10px;
+            }
+            img.logo {
+                width: 200px;
+			}
+			input {
+				margin: 10px;
+				padding: 10px;
+				border-radius: 15px;
+				border: none;
+			}
+			button {
+				padding: 10px 20px;
+				border-radius: 15px;
+				border: none;
+				background-color: maroon;
+				color: white;
+				cursor: pointer;
+			}
+			button:hover {
+				opacity: 0.8;
+			}
+        </style>
+    </head>
+    <body>
+		{% include 'flash.html' %}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Polytechnic_University_of_the_Philippines.svg/800px-Polytechnic_University_of_the_Philippines.svg.png" class="logo">
+        <div class="welcome-text">
+            <strong>PUP Medical Directory & Information Contact System</strong>
+        </div>
+    
+	<form action="/" method="post">
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    </div>
+</form>
+</body>
+</html>

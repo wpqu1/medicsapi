@@ -1,0 +1,21 @@
+{% if get_flashed_messages() %}
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    {% if category == 'success' %}
+		<div class="alert alert-warning">
+		{{ message }}
+		</div>
+    {% elif category == 'danger' %}
+		<div class="alert alert-danger">
+		{{ message }}
+		</div>
+    {% elif category == 'info' %}
+		<div class="alert alert-info">
+		{{ message }}
+		</div>
+    {% else %}
+		<div class="alert alert-info">
+		{{ message }}
+		</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}

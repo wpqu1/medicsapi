@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://www.pup.edu.ph/resources/images/icons/favicon.ico" type="image/x-icon">
+    <title>PUP MEDICS - Database Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #2d2d30;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: left;
+            height: 100vh;
+        }
+        .top-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            height: 100px;
+            margin-right: 30px;
+			padding-left: 50px;
+			padding-top: 25px;
+        }
+        .admin-dashboard {
+            font-size: 48px;
+			padding-top: 45px;
+            margin: 0;
+        }
+        .greeting {
+			font-weight: 300;
+            font-size: 24px;
+			padding-top: 4px;
+			padding-left: 50px;
+        }
+        .button {
+            background-color: #800000;
+			padding-left: 50px;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #a00000;
+        }
+        .button img {
+            vertical-align: middle;
+            margin-right: 8px;
+			width: 24px;
+			height: 24px;
+        }
+        .button-container {
+            display: flex;
+			padding-left: 60px;
+        }
+		.content-container {
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: flex-start; /* Align children to the start of the container */
+			padding-top: 100px;
+        }
+        .data-container {
+            width: 50%;
+            margin-top: 20px; /* Space between buttons and text area */
+        }
+		#data {
+            width: 1000px;
+            height: 300px; /* Adjust height as you see fit */
+			margin-right: 20px;
+			margin-left: 60px;
+			margin-bottom: 20px;
+        }
+		hr.solid {
+			margin-top: 10px;
+			border-top: 3px solid #bbb;
+			width: 92%;
+			margin-left: auto;
+			margin-right: auto;
+		}	
+
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Polytechnic_University_of_the_Philippines.svg/800px-Polytechnic_University_of_the_Philippines.svg.png" class="logo" alt="PUP Logo">
+        <div>
+            <h1 class="admin-dashboard">ADMIN DASHBOARD</h1>
+            <h2<i>PUP Medical Directory & Information Contact System</i></h2>
+        </div>
+    </div>
+  <hr class="solid">
+  <div class="button-container">
+  <button class="button", onclick="location.href='/generate_pdfStudent'">Students</button>
+  <button class="button", onclick="location.href='/generate_pdfStaff'">Staff</button>
+  <button class="button", onclick="location.href='/generate_pdfFaculty'">Faculty</button>
+  <button class="button", onclick="location.href='/generate_pdfAppointments'">Appointments</button>
+  <button class="button", onclick="location.href='/generate_pdfMedications'">Medications</button>
+  <button class="button", onclick="location.href='/generate_pdfEmergencies'">Emergencies</button>
+  <button class="button" onclick="location.href='/dashboard'">Back</button>
+  </div>
+  <hr class="solid">
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://www.pup.edu.ph/resources/images/icons/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <title>PUP MEDICS - User Creation</title>
+	<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #2d2d30;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: left;
+            height: 100vh;
+        }
+        .top-container {
+            display: flex;
+            align-items: center;
+        }
+		.image-container {
+			display: flex;
+			align-items: center;
+			padding-top: 20px;
+			padding-left: 60px;
+		}
+		.date {
+			display: flex;
+			align-items: center;
+			padding-top: 20px;
+			padding-left: 60px;
+		}
+        .logo {
+            height: 100px;
+            margin-right: 30px;
+			padding-left: 50px;
+			padding-top: 25px;
+        }
+        .admin-dashboard {
+            font-size: 48px;
+			padding-top: 45px;
+            margin: 0;
+        }
+        .greeting {
+			font-weight: 300;
+            font-size: 24px;
+			padding-left: 60px;
+        }
+        .button {
+            background-color: #800000;
+			padding-left: 50px;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+			margin-top: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #a00000;
+        }
+        .button img {
+            vertical-align: middle;
+            margin-right: 8px;
+			width: 24px;
+			height: 24px;
+        }
+        .button-container {
+            display: flex;
+			padding-left: 50px;
+        }
+		hr.solid {
+			margin-top: 10px;
+			border-top: 3px solid #bbb;
+			width: 92%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.registration-form {
+            display: none;
+			flex-direction: column;
+            margin-left: 60px;
+			margin-top: 2%;
+			padding-right: 80%;
+        }
+		.navbuttons {
+			margin-top: 2%;
+		}
+		.regtitle {
+			font-family: 'Inter', sans-serif;
+			display: flex;
+            color: #ffffff;
+			margin-top: 4px;
+			font-weight: 200;
+		}
+		
+    </style>
+</head>
+<body>
+	{% include 'flash.html' %}
+    <div class="top-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Polytechnic_University_of_the_Philippines.svg/800px-Polytechnic_University_of_the_Philippines.svg.png" class="logo" alt="PUP Logo">
+        <div>
+            <h1 class="admin-dashboard">ADMIN DASHBOARD</h1>
+            <h2<i>PUP Medical Directory & Information Contact System</i></h2>
+        </div>
+    </div>
+	<hr class="solid">
+	<div class="greeting">
+	Please select which type of user.
+	</div>
+	<hr class="solid">
+	<div class="button-container">
+        <button class="button" onclick="showForm('student')">Student</button>
+        <button class="button" onclick="showForm('staff')">Staff</button>
+        <button class="button" onclick="showForm('faculty')">Faculty</button>
+        <button class="button" onclick="showForm('doctor')">Doctor</button>
+        <button class="button" onclick="hideForm()">Hide</button>
+		<button class="button" onclick="location.href='/dashboard'">Back</button>
+    </div>
+
+    <form class="registration-form" id="student-form" action="/register_user" method="post">
+		<h3 class="regtitle">Create a student user</h3>
+		<input type="hidden" name="user_type" value="student">
+        <input type="email" id="student_email" name="student_Email" placeholder="Student Email" required>
+		<input type="text" id="student_fname" name="student_Firstname" placeholder="First Name" required>
+		<input type="text" id="student_lname" name="student_Lastname" placeholder="Last Name" required>
+		<input type="number" id="student_age" name="student_age" placeholder="Age" required>
+		<input type="text" id="student_course" name="student_Course" placeholder="Course" required>
+		<input type="text" id="student_section" name="student_Section" placeholder="Section" required>
+		<input type="tel" id="student_contact" name="student_Contact" placeholder="Phone Number" required>
+		<input type="text" id="StudentNumber" name="StudentNumber" placeholder="Student Number" required>
+		<input type="password" id="student_password" name="student_Password" placeholder="Password" required>
+			<div class="navbuttons">
+			<button class="button" type="submit">Register</button>
+			</div>
+    </form>
+
+    <form class="registration-form" id="staff-form" action="/register_user" method="post">
+		<h3 class="regtitle">Create a staff user</h3>
+		<input type="hidden" name="user_type" value="staff">
+        <input type="email" id="staff_email" name="staff_email" placeholder="Staff Email" required>
+		<input type="text" id="staff_fname" name="staff_firstname" placeholder="First Name" required>
+		<input type="text" id="staff_lname" name="staff_lastname" placeholder="Last Name" required>
+		<input type="number" id="staff_age" name="staff_age" placeholder="Age" required>
+		<input type="text" id="staff_course" name="staff_position" placeholder="Position" required>
+		<input type="tel" id="staff_contact" name="staff_contact" placeholder="Phone Number" required>
+		<input type="text" id="EmployeeNumber" name="EmployeeNumber" placeholder="Employee Number" required>
+		<input type="password" id="staff_password" name="staff_password" placeholder="Password" required>
+			<div class="navbuttons">
+			<button class="button" type="submit">Register</button>
+			</div>
+    </form>
+
+    <form class="registration-form" id="faculty-form" action="/register_user" method="post">
+       	<h3 class="regtitle">Create a faculty user</h3>
+		<input type="hidden" name="user_type" value="faculty">
+        <input type="email" id="faculty_email" name="faculty_Email" placeholder="Faculty Email" required>
+		<input type="text" id="faculty_fname" name="faculty_Firstname" placeholder="First Name" required>
+		<input type="text" id="faculty_lname" name="faculty_Lastname" placeholder="Last Name" required>
+		<input type="number" id="faculty_age" name="faculty_age" placeholder="Age" required>
+		<input type="text" id="faculty_course" name="faculty_Course" placeholder="Course" required>
+		<input type="text" id="faculty_section" name="faculty_Section" placeholder="Section" required>
+		<input type="tel" id="faculty_contact" name="faculty_Contact" placeholder="Phone Number" required>
+		<input type="text" id="EmployeeNumber" name="EmployeeNumber" placeholder="Employee Number" required>
+		<input type="password" id="faculty_password" name="faculty_Password" placeholder="Password" required>
+			<div class="navbuttons">
+			<button class="button" type="submit">Register</button>
+			</div>
+    </form>
+
+    <form class="registration-form" id="doctor-form" action="/register_user" method="post">
+       	<h3 class="regtitle">Create a doctor user</h3>
+		<input type="hidden" name="user_type" value="doctor">
+        <input type="email" id="doctor_email" name="doctor_email" placeholder="Doctor Email" required>
+		<input type="text" id="doctor_firstname" name="doctor_firstname" placeholder="First Name" required>
+		<input type="text" id="doctor_lastname" name="doctor_lastname" placeholder="Last Name" required>
+		<input type="number" id="doctor_age" name="doctor_age" placeholder="Age" required>
+		<input type="text" id="doctor_position" name="doctor_position" placeholder="Position" required>
+		<input type="tel" id="doctor_contact" name="doctor_contact" placeholder="Phone Number" required>
+		<input type="text" id="EmployeeNumber" name="EmployeeNumber" placeholder="Employee Number" required>
+		<input type="password" id="doctor_password" name="doctor_password" placeholder="Password" required>
+			<div class="navbuttons">
+			<button class="button" type="submit">Register</button>
+			</div>
+    </form>
+
+    <script>
+        function showForm(type) {
+            // Hide all forms first
+            document.querySelectorAll('.registration-form').forEach(form => {
+                form.style.display = 'none';
+            });
+
+            // Show the selected form
+            document.getElementById(type + '-form').style.display = 'block';
+        }
+
+        function hideForm() {
+            // Hide all forms
+            document.querySelectorAll('.registration-form').forEach(form => {
+                form.style.display = 'none';
+            });
+        }
+		
+</script>
+</body>
+</html>

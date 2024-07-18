@@ -7,8 +7,9 @@ from msgs import *
 
 api_bp = Blueprint('api', __name__)
 
-# API for MEDICS App
+# HTTP Requests API
 # Query parameters: record (user/forms) & type (user/employee/admin) & id (user_id)
+# Ex. http://localhost/get?record=user&id=1&type=employee
 
 @api_bp.route('/get', methods=['GET'])
 def httpGet():

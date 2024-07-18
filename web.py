@@ -5,15 +5,11 @@ from api import *
 from msgs import *
 import requests
 
-app = Flask(__name__)
-app.register_blueprint(api_bp)
-app.secret_key = secret_key_pw  # For login session in web console
-app.config['JWT_SECRET_KEY'] = secret_key_jwt  # For storing UserID; used in specific retrieval of forms
-
+web_bp = Blueprint('web', __name__)
 
 # API for Web Console
 
-@app.route('/', methods=['GET', 'POST']) # Login Screen
+@web_bp.route('/', methods=['GET', 'POST']) # Login Screen
 def login():
 
     conn = getDb()
@@ -51,7 +47,7 @@ def login():
         return response
 
 
-@app.route('/user_index', methods=['GET'])  # Main Menu
+@web_bp.route('/user_index', methods=['GET'])  # Main Menu
 def user_index():
 
     try: 
@@ -95,7 +91,7 @@ def user_index():
         return response
 
 
-@app.route('/form_index', methods=['GET'])
+@web_bp.route('/form_index', methods=['GET'])
 def form_index():
 
     try: 
@@ -144,7 +140,7 @@ def form_index():
         return response
 
 
-@app.route('/dashboard', methods=['GET']) # Main Menu
+@web_bp.route('/dashboard', methods=['GET']) # Main Menu
 def dashboard():
 
     if not session.get('logged_in') and not session.get('username'):  # Check if the user is logged in
@@ -161,7 +157,7 @@ def dashboard():
         return response
     
 
-@app.route('/logout')
+@web_bp.route('/logout')
 def logout():
     try: 
         if session.get('logged_in') and session.get('username'):
@@ -181,7 +177,7 @@ def logout():
         return response
 
 
-@app.route('/record_register', methods=['GET', 'POST']) # /add
+@web_bp.route('/record_register', methods=['GET', 'POST']) # /add
 def record_register():
 
     try: 
@@ -275,7 +271,7 @@ def record_register():
         return response
 
 
-@app.route('/record_edit', methods=['GET', 'PUT']) # /edit
+@web_bp.route('/record_edit', methods=['GET', 'PUT']) # /edit
 def record_edit():
 
     try:
@@ -380,7 +376,7 @@ def record_edit():
         return response
 
 
-@app.route('/record_delete', methods=['GET', 'DELETE']) # /edit
+@web_bp.route('/record_delete', methods=['GET', 'DELETE']) # /edit
 def record_delete():
 
     try:
@@ -438,7 +434,3 @@ def record_delete():
         response = make_response(render_template('hello.html'))
         response.status_code = 403
         return response
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
